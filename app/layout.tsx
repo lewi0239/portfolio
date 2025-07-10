@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Roboto } from 'next/font/google';
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 // Metadata for the page
@@ -25,11 +25,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-      </head>
-      <body
-        className={`${roboto.className} bg-light-bg text-dark antialiased`}
-      >
+      <head></head>
+      <body className={`${roboto.className} bg-light-bg text-dark antialiased`}>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

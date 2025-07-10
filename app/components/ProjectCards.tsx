@@ -25,18 +25,20 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
 
   const getProjectImage = (topics: string[]) => {
     const topic = topics && topics.length > 0 ? topics[0] : "default";
-    switch (topic) {
+    switch (topic.toLowerCase()) {
       case "hackathon":
         return "/images/hackathon.svg";
       case "education":
         return "/images/education.svg";
+      case "personal":
+        return "/images/personal.svg";
       default:
         return "/images/placeholder.png";
     }
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-2 gap-8">
       {data.map((repo) => (
         <div
           key={repo.id}
@@ -53,9 +55,11 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
           </div>
           <div className="p-6">
             <h3 className="text-xl font-bold text-dark mb-2">{repo.name}</h3>
+
             <p className="text-gray-600 mb-4 truncate">
               {repo.description || "No description available."}
             </p>
+
             <a
               href={repo.html_url}
               target="_blank"
@@ -65,6 +69,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
               View on GitHub
               <ArrowUpRightIcon className="inline-block h-4 w-4 ml-1" />
             </a>
+            <p className="mt-4 opacity-75">{repo.topics.join(", ")}</p>
           </div>
         </div>
       ))}

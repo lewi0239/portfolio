@@ -63,12 +63,12 @@ const Contact = () => {
     <section id="contact" className="bg-light-bg py-16 md:py-24">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-12">
-          <p className="text-lg text-dark mb-2">Get In Touch</p>
           <h2 className="text-4xl md:text-5xl font-bold text-dark">
             Contact me
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Let me know if you have any questions or if you want to work
+            together!
           </p>
         </div>
 
@@ -156,8 +156,16 @@ const Contact = () => {
             >
               <option>Select one...</option>
               <option>Web Design</option>
+              <option>Mobile Design</option>
+              <option>UI/UX Design</option>
               <option>Development</option>
-              <option>Branding</option>
+              <option>Mobile Development</option>
+              <option>Freelance</option>
+              <option>Full-Stack</option>
+              <option>Backend</option>
+              <option>Frontend</option>
+              <option>Mobile</option>
+              <option>Other</option>
             </select>
           </div>
           <div>

@@ -12,6 +12,10 @@ const navLinks = [
     href: "https://drive.google.com/file/d/1i-hcpqTiFfX6cv_1MP8ejmF4AmDEzn8Y/view?usp=sharing",
     label: "Resume",
   },
+  {
+    href: "https://github.com/lewi0239/portfolio",
+    label: "Portfolio Source",
+  },
   { href: "#contact", label: "Contact Me", isButton: true },
 ];
 

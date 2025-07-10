@@ -1,13 +1,12 @@
 // components/AboutMe.tsx
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 type AboutMeProps = {
-  description: string;
   profileImage: string;
 };
 
-const AboutMe: React.FC<AboutMeProps> = ({ description, profileImage }) => {
+const AboutMe: React.FC<AboutMeProps> = ({ profileImage }) => {
   return (
     <section id="about" className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-6">
@@ -29,13 +28,13 @@ const AboutMe: React.FC<AboutMeProps> = ({ description, profileImage }) => {
 
           {/* Text Content */}
           <div className="text-center md:text-left">
-            <p className="text-lg text-dark mb-2">About</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-6">About Me</h2>
-            <p className="text-gray-600 leading-relaxed">
-              {description}
-            </p>
-             <p className="text-gray-600 leading-relaxed mt-4">
-              Fusce varius, dolor tempor interdum tristique, dui urna bib endum magna, ut ullamcorper purus ex et massa. Suspendisse potenti. Nunc consectetur, erat non iaculis accumsan, est quam virra quam, eget comm odo vitae. Pellentesque pulvinar lorem mi, a euismod r.
+            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-6">
+              About Me
+            </h2>
+            <p className="text-gray-600 leading-relaxed mt-4">
+              I am a passionate developer who loves creating beautiful and
+              functional web applications. I enjoy building and solving problems
+              with code that have a positive impact on people&apos;s lives.
             </p>
           </div>
         </div>

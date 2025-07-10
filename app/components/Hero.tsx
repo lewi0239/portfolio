@@ -1,28 +1,57 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 const HeroBanner = () => {
   return (
     <section id="home" className="container mx-auto px-6 py-16 md:py-24">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
-        <div className="text-center md:text-left">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center md:text-left"
+        >
           <p className="text-lg text-dark mb-2">Hey, I am Brodie</p>
           <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight mb-4">
-            I create <span className="text-primary">product design</span> and brand experience
+            I create <span className="text-primary"> meaningful</span> and{" "}
+            <span className="text-primary">innovative</span> solutions
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
-          </p>
-          <Link href="#contact" className="bg-primary text-white px-8 py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors">
+          <TypeAnimation
+            sequence={[
+              "I build Full-Stack Web applications.",
+              1000,
+              "I build Full-Stack Mobile applications.",
+              1000,
+              "I solve problems with code.",
+              1000,
+            ]}
+            wrapper="p"
+            speed={50}
+            className="text-lg text-gray-600 mb-8"
+            repeat={Infinity}
+          />
+          <Link
+            href="#contact"
+            className="bg-primary text-white px-8 py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors"
+          >
             Get In Touch
           </Link>
-        </div>
+        </motion.div>
 
         {/* Image Content */}
-        <div className="relative w-full max-w-sm mx-auto md:max-w-none">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="relative w-full max-w-sm mx-auto md:max-w-none"
+        >
           <div className="relative z-10">
-             <Image
+            <Image
               src="/images/profile.jpg" // Using existing profile image as placeholder
               alt="Brodie Lewis"
               width={450}
@@ -31,9 +60,9 @@ const HeroBanner = () => {
               priority
             />
           </div>
-           {/* Decorative background shape */}
-           <div className="absolute inset-0 bg-primary/20 rounded-lg transform -rotate-6 translate-x-4 translate-y-4 z-0"></div>
-        </div>
+          {/* Decorative background shape */}
+          <div className="absolute inset-0 bg-primary/20 rounded-lg transform -rotate-6 translate-x-4 translate-y-4 z-0"></div>
+        </motion.div>
       </div>
     </section>
   );
