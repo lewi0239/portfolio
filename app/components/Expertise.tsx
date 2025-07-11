@@ -1,10 +1,8 @@
 import {
   ChartBarIcon,
-  PencilSquareIcon,
   PaintBrushIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
-import { Phone } from "lucide-react";
 import { FcCellPhone } from "react-icons/fc";
 
 const expertiseData = [
