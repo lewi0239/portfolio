@@ -29,7 +29,7 @@ type NormalizedProject = {
     description: string | null;
     html_url: string;
     topics: string[];
-    image: string; // ⬅️ now required
+    image: string;
 };
 
 const getProjectImage = (topics: string[] = []) => {
@@ -86,7 +86,7 @@ const Portfolio: React.FC = () => {
         description: repo.description,
         html_url: repo.html_url,
         topics: repo.topics ?? [],
-        image: getProjectImage(repo.topics ?? []), // ⬅️ GitHub thumbnail/icon
+        image: getProjectImage(repo.topics ?? []),
     }));
 
     const normalizedFigma: NormalizedProject[] = figmaFiles.map((file) => ({
@@ -97,7 +97,7 @@ const Portfolio: React.FC = () => {
             : file.desc ?? null,
         html_url: file.html_url,
         topics: ["figma"],
-        image: file.image, // ⬅️ from API route
+        image: file.image,
     }));
 
     const combinedProjects = [...normalizedRepos, ...normalizedFigma];
