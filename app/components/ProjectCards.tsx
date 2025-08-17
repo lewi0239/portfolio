@@ -2,79 +2,76 @@ import React from "react";
 import Image from "next/image";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
-// Define the type for props
-interface ProjectCardsProps {
-  isLoading: boolean;
-  data: {
-    id: number;
+type NormalizedProject = {
+    id: string | number;
     name: string;
     description: string | null;
     html_url: string;
     topics: string[];
-  }[];
+    image: string;
+};
+
+interface ProjectCardsProps {
+    isLoading: boolean;
+    data: NormalizedProject[];
 }
 
 const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
-  if (isLoading) {
-    return <div className="text-center text-dark">Loading projects...</div>;
-  }
-
-  if (!data || data.length === 0) {
-    return <div className="text-center text-dark">No projects to display.</div>;
-  }
-
-  const getProjectImage = (topics: string[]) => {
-    const topic = topics && topics.length > 0 ? topics[0] : "default";
-    switch (topic.toLowerCase()) {
-      case "hackathon":
-        return "/images/hackathon.svg";
-      case "education":
-        return "/images/education.svg";
-      case "personal":
-        return "/images/personal.svg";
-      default:
-        return "/images/placeholder.png";
+    if (isLoading) {
+        return <div className="text-center text-dark">Loading projects...</div>;
     }
-  };
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-2 gap-8">
-      {data.map((repo) => (
-        <div
-          key={repo.id}
-          className="bg-white rounded-lg shadow-md overflow-hidden group"
-        >
-          <div className="relative h-60 w-full">
-            <Image
-              src={getProjectImage(repo.topics)}
-              alt={repo.name}
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-dark mb-2">{repo.name}</h3>
+    if (!data || data.length === 0) {
+        return <div className="text-center text-dark">No projects to display.</div>;
+    }
 
-            <p className="text-gray-600 mb-4 truncate">
-              {repo.description || "No description available."}
-            </p>
+    return (
+        <div className="grid grid-cols-1 gap-8
+            md:grid-cols-2 md:grid-rows-5
+            lg:grid-cols-4 lg:grid-rows-2">
+            {data.map((project) => (
+                <div
+                    key={project.id}
+                    className="rounded-t-lg shadow-md overflow-hidden"
+                >
+                    <div className="relative h-60 w-full">
+                        <Image
+                            src={project.image}
+                            alt={project.name}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 33vw"
+                            style={{ objectFit: "cover" }}
+                            className="transition-transform duration-300"
+                        />
+                    </div>
 
-            <a
-              href={repo.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline inline-flex items-center"
-            >
-              View on GitHub
-              <ArrowUpRightIcon className="inline-block h-4 w-4 ml-1" />
-            </a>
-            <p className="mt-4 opacity-75">{repo.topics.join(", ")}</p>
-          </div>
+                    <div className="p-6">
+                        <h3 className="text-xl font-bold text-dark mb-2">{project.name}</h3>
+
+                        <p className="text-gray-600 mb-4 truncate">
+                            {project.description || "No description available."}
+                        </p>
+
+                        <a
+                            href={project.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:underline inline-flex items-center"
+                        >
+                            {project.topics?.[0] === "figma" ? "View on Figma" : "View on GitHub"}
+                            <ArrowUpRightIcon className="inline-block h-4 w-4 ml-1" />
+                        </a>
+
+                        <p className="mt-4 opacity-75">
+                            {project.topics && project.topics.length > 0
+                                ? project.topics.join(", ")
+                                : "Uncategorized"}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default ProjectCards;
