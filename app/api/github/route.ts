@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 // Define the shape of the raw data from the GitHub API
 interface GitHubRepo {
@@ -14,11 +14,9 @@ export async function GET() {
 
   // Check for both environment variables for robust configuration
   if (!username || !token) {
-    console.error(
-      "Missing GitHub username or auth key in environment variables."
-    );
+    console.error('Missing GitHub username or auth key in environment variables.');
     return NextResponse.json(
-      { message: "Server configuration error: Missing GitHub credentials." },
+      { message: 'Server configuration error: Missing GitHub credentials.' },
       { status: 500 }
     );
   }
@@ -29,7 +27,7 @@ export async function GET() {
       {
         headers: {
           Authorization: `token ${token}`,
-          Accept: "application/vnd.github.mercy-preview+json",
+          Accept: 'application/vnd.github.mercy-preview+json',
         },
         next: { revalidate: 3600 }, // Cache revalidation every hour
       }
@@ -48,7 +46,7 @@ export async function GET() {
 
     // Filter out archived and forked repos, then map to the desired structure
     const cleanedData = data
-      .filter((repo) => repo.name !== "")
+      .filter((repo) => repo.name !== '')
       .map(({ id, name, description, html_url, topics }) => ({
         id,
         name,
@@ -59,13 +57,7 @@ export async function GET() {
 
     return NextResponse.json(cleanedData);
   } catch (error) {
-    console.error(
-      "An unexpected error occurred while fetching repositories:",
-      error
-    );
-    return NextResponse.json(
-      { message: "An unexpected server error occurred." },
-      { status: 500 }
-    );
+    console.error('An unexpected error occurred while fetching repositories:', error);
+    return NextResponse.json({ message: 'An unexpected server error occurred.' }, { status: 500 });
   }
 }

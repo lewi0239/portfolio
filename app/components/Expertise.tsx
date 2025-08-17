@@ -40,7 +40,7 @@ const Expertise = () => {
                         My Expertise
                     </h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-4 xl:grid-cols-4 xl:grid-rows-1 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-row-3 xl:grid-col-4 xl:grid-row-1 gap-6">
                     {expertiseData.map((item) => {
                         const Icon = item.icon;
                         return (
