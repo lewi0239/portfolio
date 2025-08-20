@@ -25,36 +25,39 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
     }
 
     return (
-        <div className="bg-white rounded-xl w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {data.map((project) => {
-                const topics = project.topics?.length ? project.topics.join(", ") : "Uncategorized";
+                const topics =
+                    project.topics?.length ? project.topics.join(", ") : "Uncategorized";
                 const isFigma = project.topics?.[0] === "figma";
 
                 return (
                     <div
                         key={project.id}
-                        className="flex flex-col h-full w-50 overflow-hidden border border-slate-50 rounded-xl shadow-md hover:shadow-lg"
+                        className="flex flex-col h-full w-full rounded-xl bg-white shadow-md overflow-hidden"
                     >
-                        {/* Image (no wrapper needed since we're not using 'fill') */}
-                        <Image
-                            src={project.image}
-                            alt={project.name}
-                            width={600}
-                            height={400}
-                            className="w-full h-auto object-cover rounded-t-xl"
-                            sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                        />
+                        {/* Image */}
+                        <div className="flex aspect-square sm:aspect-[4/3] lg:aspect-video min-h-[180px]">
+                            <Image
+                                src={project.image}
+                                alt={project.name}
+                                fill
+                                className="object-cover"
+                                sizes="(min-width:400px) (min-height:400px) 25vw, (min-width:400px)(min-height:400px)"
+                            />
+                        </div>
 
                         {/* Body */}
-                        <div className="flex flex-col flex-1 p-3 bg-white">
-                            <h3 className="text-md font-bold text-dark break-words leading-snug">
+                        <div className="flex flex-col flex-1 p-3">
+                            <h3 className="text-xl font-bold text-dark break-words leading-snug">
                                 {project.name}
                             </h3>
 
-                            <p className="text-sm mt-2 text-gray-600">
+                            <p className="mt-2 text-gray-600">
                                 {project.description || "No description available."}
                             </p>
 
+                            {/* Footer pinned to bottom */}
                             <div className="mt-auto pt-4 flex flex-col">
                                 <a
                                     href={project.html_url}

@@ -33,7 +33,7 @@ const expertiseData = [
 
 const Expertise = () => {
     return (
-        <section id="expertise" className="bg-white py-16 md:py-24">
+        <section id="expertise" className="bg-white py-16 md:py-24 rounded-xl border border-gray-200 ">
             <div className="container mx-auto px-6">
                 <div className="text-center md:text-left mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-dark">
@@ -46,7 +46,7 @@ const Expertise = () => {
                         return (
                             <div
                                 key={item.title}
-                                className="bg-light-bg p-8 rounded-lg border border-gray-200 relative overflow-hidden"
+                                className="bg-light-bg p-8 rounded-lg border border-gray-50 relative overflow-hidden shadow-md hover:shadow-lg"
                             >
                                 <div className="absolute bottom-0 left-0 h-1 w-1/3 bg-primary"></div>
                                 <div className="p-4 bg-primary/10 rounded-full inline-block mb-6">

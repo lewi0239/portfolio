@@ -7,7 +7,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const HeroBanner = () => {
     return (
-        <section id="home" className="container mx-auto px-6 py-16 md:py-24">
+        <section id="home" className="container m-auto p-16 bg-white rounded-xl border border-gray-200">
             <div className="grid menu:grid-cols-2 gap-10 menu:gap-12 items-start menu:items-center">
                 {/* Text Content */}
                 <motion.div
@@ -16,7 +16,7 @@ const HeroBanner = () => {
                     transition={{ duration: 0.8, ease: "easeOut" } as const}
                     className="text-center md:text-left flex flex-col max-w-[60ch] mx-auto md:mx-0"
                 >
-                    <p className="text-lg text-dark mb-2">Hey, I am Brodie</p>
+                    <p className="text-lg font-semibold text-dark mb-2">Hey, I'm Brodie</p>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight mb-4">
                         I create <span className="text-primary">meaningful</span> and{" "}
@@ -47,7 +47,9 @@ const HeroBanner = () => {
                     {/* Button: force natural width */}
                     <Link
                         href="#contact"
-                        className="inline-flex w-auto items-center justify-center bg-primary text-white px-8 py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors self-center md:self-start"
+                        className="inline-flex w-auto items-center 
+                        justify-center bg-primary text-white px-8 py-3 rounded-md 
+                        font-medium hover:bg-opacity-90 transition-colors self-center md:self-start"
                     >
                         Get In Touch
                     </Link>
@@ -70,7 +72,8 @@ const HeroBanner = () => {
                             priority
                         />
                     </div>
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg transform -rotate-6 translate-x-4 translate-y-4 z-0"></div>
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg 
+                        transform -rotate-6 translate-x-4 translate-y-4 z-0"></div>
                 </motion.div>
             </div>
         </section>

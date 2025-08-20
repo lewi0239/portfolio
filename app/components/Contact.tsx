@@ -32,7 +32,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="bg-white container mx-auto p-8"
+            className="bg-white container mx-auto p-8 rounded-xl border border-gray-200"
         >
             <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
 
@@ -41,7 +41,6 @@ export default function Contact() {
                 onSubmit={sendEmail}
                 className="flex flex-col mt-8 px-8"
             >
-                {/* Name + Email*/}
                 <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
                         <label
@@ -51,8 +50,10 @@ export default function Contact() {
                             Name
                         </label>
                         <input
+                            id="name"
                             type="text"
                             name="name"
+                            autoComplete="name"
                             required
                             className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                         />
@@ -66,16 +67,17 @@ export default function Contact() {
                             Email
                         </label>
                         <input
+                            id="email"
                             type="email"
                             name="email"
+                            autoComplete="email"
                             required
                             className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                         />
                     </div>
                 </div>
 
-                {/* Message */}
-                <div className="mt-4">
+                <div className="flex flex-col mt-4">
                     <label
                         htmlFor="message"
                         className="block mb-2 text-sm font-medium"
@@ -83,29 +85,35 @@ export default function Contact() {
                         Message
                     </label>
                     <textarea
+                        id="message"
                         name="message"
-                        rows={4}
+                        rows={8}
+                        autoComplete="off"
+
                         required
                         className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                     />
-                </div>
 
-                {/* Button */}
-                <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="mt-6 md:justify-center py-3 w-48 bg-primary text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                    {isLoading ? "Sending..." : "Send Message"}
-                </button>
+                    <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="mt-6 p-4 mx-auto xl:w-1/4
+                        bg-primary text-white rounded-lg 
+                        hover:bg-blue-700 transition"
+                    >
+                        {isLoading ? "Sending..." : "Send Message"}
+                    </button>
+
+                </div>
 
                 {/* Success message */}
                 {isSent && (
-                    <p className="mt-6 py-3 w-auto sm:w-48 px-6 bg-green-300 text-white rounded-lg hover:bg-blue-700 transition">
+                    <p className="mt-6 py-3 w-auto sm:w-48 px-6 bg-green-300 
+                        text-white rounded-lg hover:bg-blue-700 transition">
                         Thanks! Your message has been sent.
                     </p>
                 )}
             </form>
-        </section>
+        </section >
     );
 }

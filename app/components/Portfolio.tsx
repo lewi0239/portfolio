@@ -34,18 +34,16 @@ type NormalizedProject = {
 
 const getProjectImage = (topics: string[] = []) => {
     const topic = topics[0]?.toLowerCase() ?? "default";
-    switch (topic) {
-        case "hackathon":
-            return "/images/hackathon.svg";
-        case "education":
-            return "/images/education.svg";
-        case "personal":
-            return "/images/personal.svg";
-        case "figma":
-            return "/images/figma.svg";
-        default:
-            return "/images/placeholder.svg";
+
+    if (topic === "figma.jpg") {
+        return "/images/figma.jpg";
     }
+
+    if (["education", "hackathon", "personal"].includes(topic)) {
+        return "/images/github.jpg";
+    }
+
+    return "/images/placeholder.jpg";
 };
 
 const Portfolio: React.FC = () => {
@@ -110,7 +108,7 @@ const Portfolio: React.FC = () => {
             );
 
     return (
-        <section id="portfolio" className="bg-light-bg py-16 md:py-24">
+        <section id="portfolio" className="bg-white py-16 md:py-24 border rounded-xl border-gray-200">
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-dark mb-8">
                     My Portfolio
@@ -122,8 +120,8 @@ const Portfolio: React.FC = () => {
                             key={ft}
                             onClick={() => setFilter(ft)}
                             className={`px-4 py-2 rounded transition ${filter === ft
-                                ? "bg-dark text-white"
-                                : "bg-gray-200 text-dark hover:bg-gray-300"
+                                ? "bg-primary text-white"
+                                : "<bg-gray-300 text-dark hover:text-primary"
                                 }`}
                         >
                             {ft.charAt(0).toUpperCase() + ft.slice(1)}

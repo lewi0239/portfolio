@@ -17,7 +17,7 @@ const MY_FIGMA_FILES: FigmaFile[] = [
     desc: 'The design system for RevealMe',
     html_url: 'https://www.figma.com/design/LwiKOHDNabwQNWg6SJzAOe/UX-Design--Copy-?node-id=1-9',
     last_modified: '2025-08-12T00:00:00Z',
-    image: '/images/figma.svg',
+    image: '/images/figma.jpg',
     topics: ['figma'],
   },
   {
@@ -26,7 +26,7 @@ const MY_FIGMA_FILES: FigmaFile[] = [
     desc: 'The "YC" style pitch for RevealMe',
     html_url: 'https://www.figma.com/slides/n9QXCR5OtX9CEt2FNftBtV/YC-RevealMe--Copy-?node-id=1-29',
     last_modified: '2025-08-12T00:00:00Z',
-    image: '/images/figma.svg',
+    image: '/images/figma.jpg',
     topics: ['figma'],
   },
 ];
