@@ -33,19 +33,6 @@ const Header = () => {
             ...(isExternal && { target: "_blank", rel: "noopener noreferrer" }),
         };
 
-        if (link.isButton) {
-            return (
-                <Link
-                    key={link.label}
-                    {...linkProps}
-                    onClick={isMobile ? () => setIsOpen(false) : undefined}
-                    className={`border border-primary text-primary px-4 py-2 
-rounded-md hover:bg-primary hover:text-white transition-colors ${isMobile ? "text-center" : ""}`}
-                >
-                    {link.label}
-                </Link>
-            );
-        }
 
         return (
             <Link
