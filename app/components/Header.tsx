@@ -60,7 +60,12 @@ const Header = () => {
 
                 {/* Mobile Menu Button */}
                 <div className="menu:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)}>
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-nav"
+                    >
                         {isOpen ? <XMarkIcon className="h-6 w-6 text-dark" /> : <Bars3Icon className="h-6 w-6 text-dark" />}
                     </button>
                 </div>
@@ -68,7 +73,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="menu:hidden px-6 pb-4 flex flex-col space-y-4 bg-white shadow-md">
+                <div id="mobile-nav" className="menu:hidden px-6 pb-4 flex flex-col space-y-4 bg-white shadow-md">
                     {navLinks.map((l) => renderItem(l, true))}
                 </div>
             )}

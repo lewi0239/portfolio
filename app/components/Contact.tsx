@@ -2,28 +2,37 @@
 
 
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
     const formRef = useRef<HTMLFormElement>(null);
     const [isSent, setIsSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const sendEmail = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
+        setIsError(false);
+
+        const formData = new FormData(formRef.current!);
 
         try {
-            await emailjs.sendForm(
-                process.env.NEXT_PUBLIC_MAIL_SERVICE_ID!,
-                process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID!,
-                formRef.current!,
-                process.env.NEXT_PUBLIC_MAIL_KEY!
-            );
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                }),
+            });
+
+            if (!res.ok) throw new Error('Failed');
+
             setIsSent(true);
             formRef.current?.reset();
-        } catch (error) {
-            console.error("Email sending failed:", error);
+        } catch {
+            setIsError(true);
         } finally {
             setIsLoading(false);
         }
@@ -108,9 +117,15 @@ export default function Contact() {
 
                 {/* Success message */}
                 {isSent && (
-                    <p className="mt-6 py-3 w-auto sm:w-48 px-6 bg-green-300 
-                        text-white rounded-lg hover:bg-blue-700 transition">
+                    <p className="mt-6 py-3 w-auto sm:w-48 px-6 bg-green-100 text-green-800 rounded-lg">
                         Thanks! Your message has been sent.
+                    </p>
+                )}
+
+                {/* Error message */}
+                {isError && (
+                    <p className="mt-6 py-3 w-auto px-6 bg-red-100 text-red-700 rounded-lg">
+                        Something went wrong. Please try again or email me directly.
                     </p>
                 )}
             </form>

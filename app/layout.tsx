@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 import Header from "@/components/Header";
@@ -11,10 +12,23 @@ const roboto = Roboto({
     display: "swap",
 });
 
-// Metadata for the page
 export const metadata: Metadata = {
-    title: "Brodie's Portfolio",
-    description: "Brodie  Lewis's portfolio - designed by Brodie Lewis",
+    title: "Brodie Lewis | Full-Stack Developer",
+    description:
+        "Brodie Lewis is a full-stack developer specialising in web and mobile development, UI/UX design, and cross-platform applications.",
+    openGraph: {
+        title: "Brodie Lewis | Full-Stack Developer",
+        description:
+            "Brodie Lewis is a full-stack developer specialising in web and mobile development, UI/UX design, and cross-platform applications.",
+        siteName: "Brodie Lewis Portfolio",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Brodie Lewis | Full-Stack Developer",
+        description:
+            "Brodie Lewis is a full-stack developer specialising in web and mobile development, UI/UX design, and cross-platform applications.",
+    },
 };
 
 // Root Layout Component
@@ -30,6 +44,7 @@ export default function RootLayout({
                 <Header />
                 <main className="flex-grow">{children}</main>
                 <Footer />
+                <SpeedInsights />
             </body>
         </html>
     );

@@ -16,9 +16,27 @@ interface ProjectCardsProps {
     data: NormalizedProject[];
 }
 
+function CardSkeleton() {
+    return (
+        <div className="flex flex-col overflow-hidden border border-slate-50 rounded-xl shadow-md animate-pulse">
+            <div className="w-full aspect-[3/2] bg-gray-200 rounded-t-xl" />
+            <div className="flex flex-col flex-1 p-3 bg-white gap-2">
+                <div className="h-5 w-3/4 bg-gray-200 rounded" />
+                <div className="h-4 bg-gray-200 rounded" />
+                <div className="h-4 w-5/6 bg-gray-200 rounded" />
+                <div className="h-4 w-1/3 bg-gray-200 rounded mt-4" />
+            </div>
+        </div>
+    );
+}
+
 const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
     if (isLoading) {
-        return <div className="text-center text-dark">Loading projects...</div>;
+        return (
+            <div className="bg-white rounded-xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 p-8">
+                {[...Array(4)].map((_, i) => <CardSkeleton key={i} />)}
+            </div>
+        );
     }
     if (!data || data.length === 0) {
         return <div className="text-center text-dark">No projects to display.</div>;
@@ -60,6 +78,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
                                     href={project.html_url}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label={`View ${project.name} on ${isFigma ? "Figma" : "GitHub"}`}
                                     className="text-blue-500 hover:underline inline-flex items-center text-sm"
                                 >
                                     {isFigma ? "View on Figma" : "View on GitHub"}

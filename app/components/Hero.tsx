@@ -2,21 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
 const HeroBanner = () => {
     return (
-        <section id="home" className="container m-auto p-16 bg-white rounded-xl border border-gray-200">
+        <section id="home" className="container m-auto p-12 bg-white rounded-xl border border-gray-200 md:mb-16 lg:mb:19 xl:mb-20">
             <div className="grid menu:grid-cols-2 gap-10 menu:gap-12 items-start menu:items-center">
                 {/* Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 } as const}
-                    animate={{ opacity: 1, x: 0 } as const}
-                    transition={{ duration: 0.8, ease: "easeOut" } as const}
-                    className="text-center md:text-left flex flex-col max-w-[60ch] mx-auto md:mx-0"
-                >
-                    <p className="text-lg font-semibold text-dark mb-2">Hey, I'm Brodie</p>
+                <div className="text-center md:text-left flex flex-col max-w-[60ch] mx-auto md:mx-0">
+                    <p className="text-lg font-semibold text-dark mb-2">Hey, I&apos;m Brodie</p>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight mb-4">
                         I create <span className="text-primary">meaningful</span> and{" "}
@@ -47,21 +41,16 @@ const HeroBanner = () => {
                     {/* Button: force natural width */}
                     <Link
                         href="#contact"
-                        className="inline-flex w-auto items-center 
-                        justify-center bg-primary text-white px-8 py-3 rounded-md 
+                        className="inline-flex w-auto items-center
+                        justify-center bg-primary text-white px-8 py-3 rounded-md
                         font-medium hover:bg-opacity-90 transition-colors self-center md:self-start"
                     >
                         Get In Touch
                     </Link>
-                </motion.div>
+                </div>
 
                 {/* Image Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 } as const}
-                    animate={{ opacity: 1, x: 0 } as const}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 } as const}
-                    className="relative w-full max-w-sm mx-auto md:max-w-none"
-                >
+                <div className="relative w-full max-w-sm mx-auto md:max-w-none">
                     <div className="relative z-10">
                         <Image
                             src="/images/profile.jpg"
@@ -72,9 +61,9 @@ const HeroBanner = () => {
                             priority
                         />
                     </div>
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg 
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg
                         transform -rotate-6 translate-x-4 translate-y-4 z-0"></div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

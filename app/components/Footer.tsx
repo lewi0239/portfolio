@@ -1,17 +1,16 @@
 import Link from "next/link";
-import { FaLinkedinIn } from "react-icons/fa";
-import { Github } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "#", icon: Github },
-  { href: "#", icon: FaLinkedinIn },
+  { href: "https://github.com/lewi0239", icon: FaGithub, label: "GitHub profile" },
+  { href: "https://www.linkedin.com/in/brodie-lewis/", icon: FaLinkedinIn, label: "LinkedIn profile" },
 ];
 
 const Footer = () => {
   return (
     <footer id="footer" className="bg-white border-t border-gray-200">
       <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-center opacity-50">
+        <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="text-xl font-bold text-dark mb-4 md:mb-0"></div>
           <div className="flex flex-wrap justify-center items-center space-x-6 mb-4 md:mb-0"></div>
           <div className="flex justify-center space-x-3">
@@ -21,6 +20,9 @@ const Footer = () => {
                 <Link
                   key={index}
                   href={link.href}
+                  aria-label={link.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-dark hover:text-primary transition-colors"
                 >
                   <Icon className="h-5 w-5" />
@@ -29,7 +31,7 @@ const Footer = () => {
             })}
           </div>
         </div>
-        <p className="text-sm text-gray-600 mt-4 text-center opacity-50">
+        <p className="text-sm text-gray-500 mt-4 text-center">
           &copy; {new Date().getFullYear()} Brodie Lewis. All rights reserved.
         </p>
       </div>
