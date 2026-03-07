@@ -1,134 +1,119 @@
-"use client";
+'use client';
 
-
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
 export default function Contact() {
-    const formRef = useRef<HTMLFormElement>(null);
-    const [isSent, setIsSent] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSent, setIsSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-    const sendEmail = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setIsError(false);
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setIsError(false);
 
-        const formData = new FormData(formRef.current!);
+    const formData = new FormData(formRef.current!);
 
-        try {
-            const res = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    message: formData.get('message'),
-                }),
-            });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message'),
+        }),
+      });
 
-            if (!res.ok) throw new Error('Failed');
+      if (!res.ok) throw new Error('Failed');
 
-            setIsSent(true);
-            formRef.current?.reset();
-        } catch {
-            setIsError(true);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+      setIsSent(true);
+      formRef.current?.reset();
+    } catch {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    return (
-        <section
-            id="contact"
-            className="bg-white container mx-auto p-8 rounded-xl border border-gray-200"
-        >
-            <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
+  return (
+    <section
+      id="contact"
+      className="container mx-auto rounded-xl border border-gray-200 bg-white p-8"
+    >
+      <h2 className="mb-4 text-3xl font-bold">Contact Me</h2>
 
-            <form
-                ref={formRef}
-                onSubmit={sendEmail}
-                className="flex flex-col mt-8 px-8"
-            >
-                <div className="flex flex-col md:flex-row gap-4">
-                    <div className="flex-1">
-                        <label
-                            htmlFor="name"
-                            className="block mb-2 text-sm font-medium"
-                        >
-                            Name
-                        </label>
-                        <input
-                            id="name"
-                            type="text"
-                            name="name"
-                            autoComplete="name"
-                            required
-                            className="w-full mt-1 p-2 border border-gray-300 rounded-md"
-                        />
-                    </div>
+      <form ref={formRef} onSubmit={sendEmail} className="mt-8 flex flex-col px-8">
+        <div className="flex flex-col gap-4 md:flex-row">
+          <div className="flex-1">
+            <label htmlFor="name" className="mb-2 block text-sm font-medium">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Full Name..."
+              autoComplete="name"
+              required
+              className="mt-1 w-full rounded-md border border-gray-300 p-2"
+            />
+          </div>
 
-                    <div className="flex-1">
-                        <label
-                            htmlFor="email"
-                            className="block mb-2 text-sm font-medium"
-                        >
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            autoComplete="email"
-                            required
-                            className="w-full mt-1 p-2 border border-gray-300 rounded-md"
-                        />
-                    </div>
-                </div>
+          <div className="flex-1">
+            <label htmlFor="email" className="mb-2 block text-sm font-medium">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="your@email.com..."
+              autoComplete="email"
+              required
+              className="mt-1 w-full rounded-md border border-gray-300 p-2"
+            />
+          </div>
+        </div>
 
-                <div className="flex flex-col mt-4">
-                    <label
-                        htmlFor="message"
-                        className="block mb-2 text-sm font-medium"
-                    >
-                        Message
-                    </label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows={8}
-                        autoComplete="off"
+        <div className="mt-4 flex flex-col">
+          <label htmlFor="message" className="mb-2 block text-sm font-medium">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={8}
+            autoComplete="off"
+            placeholder="Type a message..."
+            required
+            className="mt-1 w-full rounded-md border border-gray-300 p-2"
+          />
 
-                        required
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md"
-                    />
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="mx-auto mt-6 rounded-lg bg-primary p-4 text-white transition hover:bg-blue-700 xl:w-1/4"
+          >
+            {isLoading ? 'Sending...' : 'Send Message'}
+          </button>
+        </div>
 
-                    <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="mt-6 p-4 mx-auto xl:w-1/4
-                        bg-primary text-white rounded-lg 
-                        hover:bg-blue-700 transition"
-                    >
-                        {isLoading ? "Sending..." : "Send Message"}
-                    </button>
+        {/* Success message */}
+        {isSent && (
+          <p className="mt-6 w-auto rounded-lg bg-green-100 px-6 py-3 text-green-800 sm:w-48">
+            Thanks! Your message has been sent.
+          </p>
+        )}
 
-                </div>
-
-                {/* Success message */}
-                {isSent && (
-                    <p className="mt-6 py-3 w-auto sm:w-48 px-6 bg-green-100 text-green-800 rounded-lg">
-                        Thanks! Your message has been sent.
-                    </p>
-                )}
-
-                {/* Error message */}
-                {isError && (
-                    <p className="mt-6 py-3 w-auto px-6 bg-red-100 text-red-700 rounded-lg">
-                        Something went wrong. Please try again or email me directly.
-                    </p>
-                )}
-            </form>
-        </section >
-    );
+        {/* Error message */}
+        {isError && (
+          <p className="mt-6 w-auto rounded-lg bg-red-100 px-6 py-3 text-red-700">
+            Something went wrong. Please try again or email me directly.
+          </p>
+        )}
+      </form>
+    </section>
+  );
 }
