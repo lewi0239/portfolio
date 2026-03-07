@@ -1,9 +1,7 @@
 // components/CvDownloadButton.tsx
 "use client";
 
-export default function CvDownloadButton({
-  fileName = "Brodie-Lewis-CV.pdf",
-}: { fileName?: string }) {
+export default function CvDownloadButton() {
   const handleDownload = async () => {
     const url = process.env.NEXT_PUBLIC_BLOB_URL;
 
@@ -11,6 +9,8 @@ export default function CvDownloadButton({
       console.error("CV Blob URL is not defined");
       return;
     }
+
+    const fileName = url.split("/").pop() ?? "Brodie-Lewis-CV";
 
     try {
       const response = await fetch(url);

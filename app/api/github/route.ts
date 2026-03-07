@@ -26,7 +26,7 @@ export async function GET() {
       `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=10`,
       {
         headers: {
-          Authorization: `token ${token}`,
+          Authorization: `Bearer ${token}`,
           Accept: 'application/vnd.github.mercy-preview+json',
         },
         next: { revalidate: 3600 }, // Cache revalidation every hour
