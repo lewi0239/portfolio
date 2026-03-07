@@ -22,7 +22,7 @@ const expertiseData = [
     icon: PaintBrushIcon,
     title: 'UI & UX Design',
     description:
-      'Designs full-scope design systems in Figma and Adobe Suite, covering UI/UX research, typography, colour, grids, components, and mid/high-fidelity prototypes. Experienced presenting concepts to stakeholders and iterating based on feedback.',
+      'Designs full-scope design systems in Figma and Adobe Suite, covering UI/UX research, typography, colour, grids, components, and mid/high-fidelity prototypes. Experience presenting concepts to stakeholders and iterating based on feedback.',
   },
   {
     icon: CodeBracketIcon,
