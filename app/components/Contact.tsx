@@ -7,11 +7,13 @@ export default function Contact() {
   const [isSent, setIsSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isRateLimited, setIsRateLimited] = useState(false);
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setIsError(false);
+    setIsRateLimited(false);
 
     const formData = new FormData(formRef.current!);
 
@@ -25,6 +27,11 @@ export default function Contact() {
           message: formData.get('message'),
         }),
       });
+
+      if (res.status === 429) {
+        setIsRateLimited(true);
+        return;
+      }
 
       if (!res.ok) throw new Error('Failed');
 
@@ -102,14 +109,21 @@ export default function Contact() {
 
         {/* Success message */}
         {isSent && (
-          <p className="mt-6 w-auto rounded-lg bg-green-100 px-6 py-3 text-green-800 sm:w-48">
+          <p className="mt-6 w-auto rounded-lg bg-green-100 px-6 py-3 text-center text-green-800">
             Thanks! Your message has been sent.
+          </p>
+        )}
+
+        {/* Rate limit message */}
+        {isRateLimited && (
+          <p className="mt-6 w-auto rounded-lg bg-yellow-100 px-6 py-3 text-center text-yellow-800">
+            Too many submissions. Please wait a few minutes and try again.
           </p>
         )}
 
         {/* Error message */}
         {isError && (
-          <p className="mt-6 w-auto rounded-lg bg-red-100 px-6 py-3 text-red-700">
+          <p className="mt-6 w-auto rounded-lg bg-red-100 px-6 py-3 text-center text-red-700">
             Something went wrong. Please try again or email me directly.
           </p>
         )}
