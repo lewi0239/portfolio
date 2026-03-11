@@ -45,7 +45,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
   }
 
   return (
-    <div className="grid h-full w-full grid-cols-1 grid-rows-2 gap-12 rounded-xl bg-white p-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid h-full w-full grid-cols-1 grid-rows-2 gap-12 rounded-xl bg-white p-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
       {data.map((project) => {
         const topics = project.topics?.length ? project.topics.join(', ') : 'Uncategorized';
         const isFigma = project.topics?.[0] === 'figma';
@@ -53,7 +53,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
         return (
           <div
             key={project.id}
-            className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-50 shadow-md hover:shadow-lg"
+            className="max-auto flex h-full max-w-sm flex-col overflow-hidden rounded-xl shadow-md hover:shadow-lg"
           >
             {/* Image (no wrapper needed since we're not using 'fill') */}
             <Image

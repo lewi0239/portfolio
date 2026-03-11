@@ -10,9 +10,9 @@ const AboutMe: React.FC<AboutMeProps> = ({ profileImage }) => {
   return (
     <section id="about" className="rounded-xl border border-gray-200 bg-white py-24">
       <div className="container mx-auto px-8">
-        <div className="grid items-center gap-12 md:grid-cols-2">
+        <div className="grid items-center gap-12 md:grid-cols-1 xl:grid-cols-2">
           {/* Image Content */}
-          <div className="relative mx-auto w-full max-w-sm md:max-w-none">
+          <div className="relative mx-auto w-full max-w-sm md:max-w-sm">
             <div className="relative z-10">
               <Image
                 src={profileImage}
@@ -23,7 +23,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ profileImage }) => {
               />
             </div>
             {/* Decorative background shape */}
-            <div className="absolute inset-0 z-0 rotate-6 scale-105 transform rounded-lg bg-primary/20"></div>
+            <div className="absolute inset-0 z-0 rotate-6 scale-100 transform rounded-lg bg-primary/20"></div>
           </div>
 
           {/* Text Content */}
