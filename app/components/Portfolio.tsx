@@ -118,9 +118,7 @@ const Portfolio: React.FC = () => {
               key={ft}
               onClick={() => setFilter(ft)}
               className={`rounded px-4 py-2 transition ${
-                filter === ft
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-300 text-dark hover:text-primary'
+                filter === ft ? 'bg-primary text-white' : 'bg-gray-300 text-dark hover:text-primary'
               }`}
             >
               {ft.charAt(0).toUpperCase() + ft.slice(1)}
