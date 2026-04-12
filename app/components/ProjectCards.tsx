@@ -89,7 +89,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
                         className="inline-flex items-center text-sm text-blue-500 hover:underline"
                       >
                         {isFigma ? 'View on Figma' : 'View on GitHub'}
-                        <ArrowUpRightIcon className="ml-1 h-3 w-3" />
+                        <ArrowUpRightIcon className="ml-1 h-3 w-3 hover:bg-primary" />
                       </a>
                       <p className="mt-2 text-sm opacity-75">{topics}</p>
                     </div>
@@ -103,13 +103,13 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({ isLoading, data }) => {
       <div className="mt-4 flex justify-center gap-4">
         <button
           onClick={() => emblaApi?.scrollPrev()}
-          className="rounded-full bg-white p-2 shadow-md hover:shadow-lg"
+          className="rounded-full bg-white p-2 shadow-md hover:bg-primary hover:shadow-lg"
         >
           <ArrowLongLeftIcon className="h-8 w-8" />
         </button>
         <button
           onClick={() => emblaApi?.scrollNext()}
-          className="rounded-full bg-white p-2 shadow-md hover:shadow-lg"
+          className="rounded-full bg-white p-2 shadow-md hover:bg-primary hover:shadow-lg"
         >
           <ArrowLongRightIcon className="h-8 w-8" />
         </button>
