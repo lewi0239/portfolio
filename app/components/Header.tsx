@@ -17,7 +17,6 @@ const navLinks = [
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Reusable renderer so desktop & mobile menus stay in sync
   const renderItem = (link: (typeof navLinks)[number], isMobile = false) => {
     if (link.label === 'Resume') {
       return (
@@ -38,18 +37,21 @@ const Header = () => {
         key={link.label}
         {...linkProps}
         onClick={isMobile ? () => setIsOpen(false) : undefined}
-        className="text-dark transition-colors hover:text-primary"
+        className="group flex items-center gap-1 text-muted transition-colors hover:text-primary"
       >
+        <span className="text-primary opacity-0 transition-opacity group-hover:opacity-100">
+          {'>'}
+        </span>
         {link.label}
       </Link>
     );
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-navy">
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        <div className="py-2 text-xl font-bold text-dark">
-          <Link href="/">Brodie Lewis</Link>
+        <div className="text-xl font-bold text-primary">
+          <Link href="/">brodie@portfolio:~$</Link>
         </div>
 
         {/* Desktop Menu */}
@@ -78,7 +80,7 @@ const Header = () => {
       {isOpen && (
         <div
           id="mobile-nav"
-          className="flex flex-col items-center justify-center space-y-4 bg-white px-6 pb-4 shadow-md menu:hidden"
+          className="flex flex-col items-center justify-center space-y-4 border-b border-border bg-navy px-6 pb-4 menu:hidden"
         >
           {navLinks.map((l) => renderItem(l, true))}
         </div>

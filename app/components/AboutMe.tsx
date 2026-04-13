@@ -8,7 +8,7 @@ type AboutMeProps = {
 
 const AboutMe: React.FC<AboutMeProps> = ({ profileImage }) => {
   return (
-    <section id="about" className="rounded-xl border border-gray-200 bg-white py-24">
+    <section id="about" className="border border-border bg-white py-24">
       <div className="container mx-auto px-8">
         <div className="grid items-center gap-12 md:grid-cols-1 xl:grid-cols-2">
           {/* Image Content */}
@@ -19,17 +19,17 @@ const AboutMe: React.FC<AboutMeProps> = ({ profileImage }) => {
                 alt="About Me Image"
                 width={450}
                 height={450}
-                className="rounded-lg object-cover shadow-lg"
+                className="object-cover"
               />
             </div>
-            {/* Decorative background shape */}
-            <div className="absolute inset-0 z-0 rotate-6 scale-100 transform rounded-lg bg-primary/20"></div>
+            <div className="absolute inset-0 z-0 rotate-6 scale-100 transform bg-primary/10"></div>
           </div>
 
           {/* Text Content */}
           <div className="text-center md:text-left">
+            <p className="mb-1 text-sm text-muted">// about</p>
             <h2 className="mb-6 text-4xl font-bold text-dark menu:text-5xl">About Me</h2>
-            <p className="mt-4 leading-relaxed text-gray-600">
+            <p className="mt-4 leading-relaxed text-muted">
               Full-stack developer with hands-on experience in TypeScript, RESTful API development,
               and UX/UI design. Winner of the 2025 Algonquin College Tech Showcase. Led a team to
               deliver a mobile app MVP under tight deadlines, with a focus on strong technical

@@ -12,7 +12,7 @@
     "@heroicons/react": "^2.2.0",
     "@react-email/render": "^2.0.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@vercel/blob": "^1.1.1",
+    "@vercel/blob": "^2.3.3",
     "@vercel/speed-insights": "^1.2.0",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -41,7 +41,7 @@
     "typescript-eslint": "^8.38.0"
   },
   "engines": {
-    "node": "22.x"
+    "node": "25.x"
   },
   "browserslist": [
     "Chrome >= 90",

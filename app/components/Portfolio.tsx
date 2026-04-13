@@ -108,25 +108,34 @@ const Portfolio: React.FC = () => {
         );
 
   return (
-    <section id="portfolio" className="rounded-xl border border-gray-200 bg-white py-16 md:py-24">
+    <section id="portfolio" className="border border-border bg-white py-16 md:py-24">
       <div className="container mx-auto px-6">
-        <h2 className="mb-8 text-center text-3xl font-bold text-dark md:text-4xl">My Portfolio</h2>
+        <div className="mb-8 text-center">
+          <p className="mb-1 text-sm text-muted">// portfolio</p>
+          <h2 className="text-3xl font-bold text-dark md:text-4xl">My Portfolio</h2>
+        </div>
 
         <div className="mb-8 flex justify-center gap-4">
           {(['all', 'github', 'figma'] as FilterType[]).map((ft) => (
             <button
               key={ft}
               onClick={() => setFilter(ft)}
-              className={`rounded px-4 py-2 transition ${
-                filter === ft ? 'bg-primary text-white' : 'bg-gray-300 text-dark hover:text-primary'
+              className={`border px-4 py-2 font-mono text-sm uppercase transition-colors ${
+                filter === ft
+                  ? 'border-primary bg-primary text-navy'
+                  : 'border-border text-muted hover:border-primary hover:text-primary'
               }`}
             >
-              {ft.charAt(0).toUpperCase() + ft.slice(1)}
+              [{ft}]
             </button>
           ))}
         </div>
 
-        {error && <div className="text-center text-red-500">Error: {error}</div>}
+        {error && (
+          <div className="text-center text-grv-red">
+            {'>'} error: {error}
+          </div>
+        )}
 
         <ProjectCards isLoading={isLoading} data={filteredProjects} />
       </div>

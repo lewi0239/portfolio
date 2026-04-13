@@ -34,28 +34,26 @@ const expertiseData = [
 
 const Expertise = () => {
   return (
-    <section
-      id="expertise"
-      className="md:py-18 md:mt-18 lg:mt:20 rounded-xl border border-gray-200 bg-white py-8 xl:mt-24"
-    >
+    <section id="expertise" className="border border-border bg-white py-8 md:py-18 xl:mt-24">
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center md:text-left">
+          <p className="mb-1 text-sm text-muted">// expertise</p>
           <h2 className="text-2xl font-bold text-dark md:text-4xl">My Expertise</h2>
         </div>
-        <div className="lg:grid-row-3 xl:grid-col-4 xl:grid-row-1 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {expertiseData.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="relative overflow-hidden rounded-lg border border-gray-50 bg-light-bg p-8 shadow-md hover:shadow-lg"
+                className="relative overflow-hidden border border-border bg-light-bg p-8 transition-colors hover:border-primary"
               >
                 <div className="absolute bottom-0 left-0 h-1 w-1/3 bg-primary"></div>
-                <div className="mb-6 inline-block rounded-full bg-primary/10 p-4">
+                <div className="mb-6 inline-block bg-primary/10 p-4">
                   <Icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-md mb-4 font-bold text-dark">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-muted">{item.description}</p>
               </div>
             );
           })}

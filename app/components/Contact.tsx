@@ -45,32 +45,30 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="container mx-auto rounded-xl border border-gray-200 bg-white p-8"
-    >
-      <h2 className="mb-4 text-3xl font-bold">Contact Me</h2>
+    <section id="contact" className="container mx-auto border border-border bg-white p-8">
+      <p className="mb-1 text-sm text-muted">// contact</p>
+      <h2 className="mb-4 text-3xl font-bold text-dark">Contact Me</h2>
 
       <form ref={formRef} onSubmit={sendEmail} className="mt-8 flex flex-col px-8">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="flex-1">
-            <label htmlFor="name" className="mb-2 block text-sm font-medium">
-              Name
+            <label htmlFor="name" className="mb-2 block text-sm font-medium text-muted">
+              name:
             </label>
             <input
               id="name"
               type="text"
               name="name"
-              placeholder="Full Name..."
+              placeholder="full name..."
               autoComplete="name"
               required
-              className="mt-1 w-full rounded-md border border-gray-300 p-2"
+              className="mt-1 w-full border border-border bg-light-bg p-2 text-dark placeholder:text-grv-bg3 focus:border-primary focus:outline-none"
             />
           </div>
 
           <div className="flex-1">
-            <label htmlFor="email" className="mb-2 block text-sm font-medium">
-              Email
+            <label htmlFor="email" className="mb-2 block text-sm font-medium text-muted">
+              email:
             </label>
             <input
               id="email"
@@ -79,52 +77,49 @@ export default function Contact() {
               placeholder="your@email.com..."
               autoComplete="email"
               required
-              className="mt-1 w-full rounded-md border border-gray-300 p-2"
+              className="mt-1 w-full border border-border bg-light-bg p-2 text-dark placeholder:text-grv-bg3 focus:border-primary focus:outline-none"
             />
           </div>
         </div>
 
         <div className="mt-4 flex flex-col">
-          <label htmlFor="message" className="mb-2 block text-sm font-medium">
-            Message
+          <label htmlFor="message" className="mb-2 block text-sm font-medium text-muted">
+            message:
           </label>
           <textarea
             id="message"
             name="message"
             rows={8}
             autoComplete="off"
-            placeholder="Type a message..."
+            placeholder="type a message..."
             required
-            className="mt-1 w-full rounded-md border border-gray-300 p-2"
+            className="mt-1 w-full border border-border bg-light-bg p-2 text-dark placeholder:text-grv-bg3 focus:border-primary focus:outline-none"
           />
 
           <button
             type="submit"
             disabled={isLoading}
-            className="mx-auto mt-6 rounded-lg bg-primary p-4 text-white transition hover:bg-blue-700 xl:w-1/4"
+            className="mx-auto mt-6 border border-primary bg-transparent px-8 py-3 text-primary transition-colors hover:bg-primary hover:text-navy disabled:opacity-50 xl:w-1/4"
           >
-            {isLoading ? 'Sending...' : 'Send Message'}
+            {isLoading ? '// sending...' : '> SEND MESSAGE'}
           </button>
         </div>
 
-        {/* Success message */}
         {isSent && (
-          <p className="mt-6 w-auto rounded-lg bg-green-100 px-6 py-3 text-center text-green-800">
-            Thanks! Your message has been sent.
+          <p className="mt-6 w-auto border border-grv-green bg-grv-green/10 px-6 py-3 text-center text-grv-green">
+            {'>'} message sent successfully.
           </p>
         )}
 
-        {/* Rate limit message */}
         {isRateLimited && (
-          <p className="mt-6 w-auto rounded-lg bg-yellow-100 px-6 py-3 text-center text-yellow-800">
-            Too many submissions. Please wait a few minutes and try again.
+          <p className="mt-6 w-auto border border-primary bg-primary/10 px-6 py-3 text-center text-primary">
+            {'>'} rate limited — please wait a few minutes and try again.
           </p>
         )}
 
-        {/* Error message */}
         {isError && (
-          <p className="mt-6 w-auto rounded-lg bg-red-100 px-6 py-3 text-center text-red-700">
-            Something went wrong. Please try again or email me directly.
+          <p className="mt-6 w-auto border border-grv-red bg-grv-red/10 px-6 py-3 text-center text-grv-red">
+            {'>'} error — please try again or email me directly.
           </p>
         )}
       </form>

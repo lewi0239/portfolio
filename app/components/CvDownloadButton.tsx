@@ -29,8 +29,8 @@ export default function CvDownloadButton() {
   };
 
   return (
-    <button onClick={handleDownload} className="transition-colors hover:text-primary">
-      Resume
+    <button onClick={handleDownload} className="text-muted transition-colors hover:text-primary">
+      {'>'} Resume
     </button>
   );
 }

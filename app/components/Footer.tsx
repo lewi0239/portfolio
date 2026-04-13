@@ -12,12 +12,13 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer id="footer" className="bg-white">
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-col items-center justify-center md:flex-row">
-          <div className="mb-4 text-xl font-bold text-dark md:mb-0"></div>
-          <div className="mb-4 flex flex-wrap items-center justify-center space-x-6 md:mb-0"></div>
-          <div className="flex justify-center space-x-3">
+    <footer id="footer" className="border-t border-border bg-navy">
+      <div className="container mx-auto px-6 py-6">
+        <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:justify-between">
+          <p className="text-sm text-muted">
+            <span className="text-primary">{'>'}</span> brodie@portfolio:~$
+          </p>
+          <div className="flex justify-center space-x-4">
             {socialLinks.map((link, index) => {
               const Icon = link.icon;
               return (
@@ -27,7 +28,7 @@ const Footer = () => {
                   aria-label={link.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-dark transition-colors hover:text-primary"
+                  className="text-muted transition-colors hover:text-primary"
                 >
                   <Icon className="h-5 w-5" />
                 </Link>
@@ -35,7 +36,7 @@ const Footer = () => {
             })}
           </div>
         </div>
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-xs text-muted">
           &copy; {new Date().getFullYear()} Brodie Lewis. All rights reserved.
         </p>
       </div>
