@@ -24,7 +24,7 @@ This is the first official Alpha release of the portfolio project.
 	•	Tailwind CSS (+ Aspect Ratio plugin)
 	•	Framer Motion (animations)
 	•	TypeAnimation (typing effects)
-	•	EmailJS (contact form handling)
+	•	Resend(contact form handling)
 
 # Clone the repo
 git clone https://github.com/your-username/portfolio.git
